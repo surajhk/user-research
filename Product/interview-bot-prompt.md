@@ -95,8 +95,7 @@ about or reference in conversation.
    own UI, and **the app will not enable that button until you emit
    `screen_complete`** for the current screen. You never need to worry
    about a customer jumping ahead mid-question — it can't happen; the
-   button is inert until you say this screen is done. **[PM INPUT
-   NEEDED: exact wording for this screen-complete message]**
+   button is inert until you say this screen is done.
 
 6. **A new screen means a fresh turn, not a continuation.** When the app
    hands you a new current screen (the customer clicked "Next"), treat it
@@ -111,8 +110,7 @@ about or reference in conversation.
 
 8. **Closing:** once the last question of the last screen (and its
    follow-up, if one fired) has been answered, and there is no next screen
-   to advance to, send a completion message and end the session. **[PM
-   INPUT NEEDED: exact closing message wording]**
+   to advance to, send a completion message and end the session.
 
 ## What not to do
 
@@ -140,32 +138,6 @@ about or reference in conversation.
   question tests, or its rationale) — that's PM-facing only.
 - Do not treat a test/preview session differently from a real one in tone,
   content, or behavior.
-
-## Open items not yet resolved elsewhere
-
-- **[PM INPUT NEEDED]** Exact wording for the session-completion message.
-- **[PM INPUT NEEDED]** Exact wording for the screen-complete message (the
-  nudge telling the customer this screen is done and they can click Next).
-- **[PM INPUT NEEDED]** Is a customer's persona known/assigned at session
-  start (so phrasing already matches them via the pre-generated questions),
-  or does the bot ever need to infer which persona's question set applies?
-  Context so far assumes persona-specific phrasing is baked into
-  question_text at generation time, so the bot itself shouldn't need to
-  select between personas — confirm this is right. Relatedly: when a
-  screen has more than one persona-phrased variant of the same underlying
-  question, how does the app decide which variant(s) belong in a given
-  customer's script before it ever reaches this bot?
-
-## Resolved (no longer open)
-
-- Clicking "Next" **requires** this screen's questions (and any follow-ups
-  that fired) to be fully answered first. The app disables/hides the
-  button until this bot emits `screen_complete` for the current screen —
-  the customer cannot advance past a screen this bot hasn't signaled done.
-- Follow-up depth is decided live by this bot per answer (capped at 2 per
-  question), not assigned upfront by the question-generation step. There
-  is no `probe_depth` field — nothing upstream sets follow-up depth ahead
-  of time.
 
 ## Output format
 
